@@ -1,0 +1,103 @@
+{% extends 'myapp/base.html' %}
+
+
+{% block formv %}
+	<form  id="form1" action="Home">
+{% endblock %}
+
+{% block link1 %}
+	<a href="Search" style="color:white">Search</a>
+{% endblock %}
+
+
+{% block home_buttons %}
+	<tr>
+		<ul style="font-size:x-large;box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+			<li><input type="submit" class="pgc" name="pg" value="Home" /></li>
+			<li><input type="submit" class="pgc" name="pg" value="Movies" /></li>
+			<li><input type="submit" class="pgc" name="pg" value="Twitterati" /></li>
+			<li><input type="submit" class="pgc" name="pg" value="Television Soap Opera" /></li>
+			<li><input type="submit" class="pgc" name="pg" value="Books" /></li>
+			<li><input type="submit" class="pgc" name="pg" value="Theatre" /></li>
+		</ul>
+	</tr>
+{% endblock %}
+
+
+{% block content %}
+
+	<input type="hidden" name="pgg" value= '{{pg}}' />
+	
+	{% if pg == "Twitterati" %}
+		<div style="width:100%; border-style:2px solid; background-color:#4CAF50; height:100%">
+			<table>
+				<tr>
+					<td>
+						<div class="dropdown2">
+						<button class="dropbtn2"><h3><input type="checkbox" name="c1">Number of tweets per twitterati&nbsp;&#8681;</button>
+						<div class="dropdown-content2"> <input type="number" name="c1t" min="1" max="10"></h3> </div>
+						</div>
+					</td>
+					<td>
+						<div class="dropdown2">
+						<button class="dropbtn2"><h3><input type="checkbox" name="c2">Rank of twitterati(1-100)&nbsp;&#8681;</button>
+						<div class="dropdown-content2"> From:&nbsp<input type="number" name="c2t1" min="1" max="99">&nbspTo:<input type="number" name="c2t2" min="2" max="100"><br> </h3></div>
+						</div>
+					</td>
+					<td>
+						<div class="dropdown2">
+						<button class="dropbtn2" style="padding-left:27px; padding-right:27px; "><h3><input type="checkbox" name="c3">Keyword&nbsp;&#8681;</h3></button>
+						<div class="dropdown-content2"><input type="text" name="c3t" class="inputtype"><br> </div>
+						</div>
+					</td>
+					<td style="background-color:black;">
+						<input type="submit" class="pgc" name="bb" value="Apply">
+					</td>
+				</tr>
+			</table>
+		</div>
+
+	{% else %}
+		<div style="width:100%; font-size:smaller; height:100%">
+		
+		{% if pg == "Movies" %}
+			<input type="submit" class="button" name="bb" value="Trailers" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Controversies" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Birthdays" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Facts" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Famous Dialogues" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Place of shoot" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Actors" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Reviews" />
+		{% elif pg == "Books" %}
+			<input type="submit" class="button" name="bb" value="Authors" />&nbsp;
+			<input type="submit" class="button" name="bb" value="New Releases" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Reviews" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Awards" />&nbsp;
+		
+		{% elif pg == "Theatre" %}
+			<input type="submit" class="button" name="bb" value="Plays" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Adapted from" />&nbsp;
+			<input type="submit" class="button" name="bb" value="History" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Facts" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Awards" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Actors" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Reviews" />
+		
+		{% elif pg == "Television Soap Opera" %}
+			<input type="submit" class="button" name="bb" value="Fan Theory" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Characterization" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Facts" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Plot" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Actors" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Awards" />&nbsp;
+			<input type="submit" class="button" name="bb" value="Reviews" />
+		
+		{% endif %}
+		
+		<br><br>
+		</div>
+	{% endif %}
+	
+	
+{% endblock %}

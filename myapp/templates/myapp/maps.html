@@ -1,0 +1,166 @@
+{% extends 'myapp/base.html' %}
+
+{% block googlechartsinit %}
+	
+	{% if mapb == 'None' or mapb != 'Worldwide' %}
+
+		<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+		
+			google.charts.load('upcoming', {'packages':['geochart']});
+			google.charts.setOnLoadCallback(drawRegionsMap);
+			
+			function drawRegionsMap() 
+			{
+
+				var data = google.visualization.arrayToDataTable( {% autoescape off %} {{country_woeid}} {% endautoescape %});
+				var options = {};
+				var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+				chart.draw(data, options);
+
+				// Every time the table fires the "select" event, it should call your
+				// selectHandler() function.
+				google.visualization.events.addListener(chart, 'regionClick', regionClickHandler);
+
+				function regionClickHandler(e) 
+				{
+					{% if mapb == 'Towns' or tid != None %}
+					
+						var town_id ={% autoescape off %} {{town_woeid}} {% endautoescape %} ;
+						var twn= {{twn}} ;
+						var s = "<table><tr><th>Town:</th><th>WOEID</th></tr>";
+						
+						for(i=0;i<twn;i++)
+						{
+							if (town_id[i][0]==e['region'])
+							{
+								s=s+"<tr><td>"+town_id[i][1]+"</td><td><input type='submit' name='tid' value="+town_id[i][2]+"></td></tr>";
+							}
+						}
+						s=s+"</table>";
+						document.getElementById('aa').innerHTML = s;
+						
+					{% else %}
+
+						document.getElementById('aa2').innerHTML = " <input type='hidden' name='ecc' value="+e['region']+" > <br>Loading....Please wait....";
+						document.getElementById('form1').submit(); 
+					
+					{% endif %}
+				}
+			}
+        </script>
+		
+	{% endif %}	
+		
+{% endblock %}
+
+
+{% block formv %}
+	<form action="Search" id="form1">
+{% endblock %}
+
+{% block link1 %}
+	<a href="Home" style="color:white">Home</a>
+{% endblock %}
+
+
+{% block content %}
+
+		<div style="width:100%; height:100%; font-size:20px; font-weight:bold;">
+
+		   <br>
+			<table style=" font-size:20px; font-weight:bold; text-align:center; vertical-align:center; width:100%;">
+				<tr>
+					<td>
+						Choose a field 
+					</td>
+					<td>
+						<select class="inputtype" name="dropdown" style="width:100%">
+
+							{% if dd == "hash" %}       
+							   <option value="hash"  selected>Hashtag</option>
+							{% else %}
+							   <option value="hash">Hashtag</option>
+							{% endif %}
+							   
+							{% if dd == "user" %}
+							   <option value="user"  selected>Users</option>
+							{% else %}
+								<option value="user">Users</option>
+							{% endif %}
+							
+							{% if dd == "key" %}
+							   <option value="key"  selected>Multiple Keywords</option>
+							{% else %}
+								<option value="key">Multiple Keywords</option>
+							{% endif %}
+							
+							{% if dd == "location" %}
+							   <option value="location" selected>Location</option>
+							{% else %}
+								<option value="location">Location</option>
+							{% endif %}
+							
+							{% if dd == "maps" %}
+							   <option value="maps" selected>Location maps</option>
+							{% else %}
+								<option value="maps">Location maps</option>
+							{% endif %}
+
+                                                        {% if dd == "IMDbM" %}
+						           <option value="IMDbM"  selected>IMDb Movie</option>
+						        {% else %}
+							        <option value="IMDbM">IMDb Movie</option>
+						        {% endif %}
+
+                                                        {% if dd == "IMDbP" %}
+						           <option value="IMDbP"  selected>IMDb Person</option>
+						        {% else %}
+							        <option value="IMDbP">IMDb Person</option>
+						        {% endif %}
+
+						</select>
+					</td>
+					<td style="text-align:right;">
+						Enter the content
+					</td>
+					<td>
+						{% if stext %}
+							<input class='inputtype' type='text' name='stext' style='width:80%' value='{{stext}}' >
+						{% else %}
+							<input class="inputtype" type="text" name="stext" style="width:80%">
+						{% endif %}
+					</td>
+					<td style="padding-right:10px">
+						<input type="submit" class="button" name="search" value="Search" style="width:100%; text-size:20px;"/>
+					</td>
+				</tr>
+			</table>
+			<br>
+			<hr style="height:5px; color:black;">
+		</div>
+
+		</td>
+	</tr>
+	<tr>
+		<td>
+	    <div>
+            <input class="button11" type="submit" name="mapb" value="Countries">
+            <input class="button11" type="submit" name="mapb" value="Towns">
+            <input class="button11" type="submit" name="mapb" value="Worldwide">
+        </div>
+
+		{% if mapb != "Worldwide" %}
+			<div id="regions_div" style="width: 100%; height: 500px; overflow:scroll;"></div>
+		{% endif %}
+		<div id="aa" style="width: 100%; overflow:scroll;"> </div>
+		<div id="aa2"></div>
+		
+
+{% endblock %}		
+
+
+
+
+
+

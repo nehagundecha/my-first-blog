@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Home</title>
+		
+		{% block googlechartsinit %}
+		{% endblock %}
+
+        <style type="text/css">
+            .style3
+            {
+                width: 231px;
+            }
+            .style4
+            {
+                height: 28px;
+            }
+            .style5
+            {
+                height: 28px;
+                width: 231px;
+            }
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+            }
+
+            li {
+                float: top;
+                border-bottom:1px solid #bbb;
+
+            }
+
+            li:first-child {
+                //border-right: none;
+                border-top:1px solid #bbb;
+            }
+
+            /*li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }*/
+
+            li a:hover:not(.active) {
+                background-color: #111;
+            }
+
+            .active {
+                background-color: #4CAF50;
+            }
+
+            .class1 {
+                background-color:White;
+                height:100vh;
+                width:96%;
+                position:relative;
+                left:2%;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+				font-size:15px;
+            }
+
+            .class2 {
+                background-color:#000033;
+                height: 89px;
+                width: 100%;
+                color: White;
+				font-size:15px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+                     /* position:relative; top:-307px; left: 238px; */
+            }
+
+            .imgclass {
+                margin-top:0px;
+                border-radius:25%;
+                width:106px;
+                height:86px
+            }
+
+            .unclass {
+                font-family:'Lucida Handwriting';
+                font-size:X-Large;
+                color:White;
+            }
+
+            .ulclass {
+                font-size:x-large;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+
+            input[type = "submit"] {
+                font-family:Lucida Bright;
+                font-size:15px;
+                height:40px;
+                margin-left: 0px;
+                box-shadow: 3px 3px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+
+            .table1 {
+                color:Black;
+                background-color:White;
+                font-family:'Times new roman';
+                font-size:large;
+				font-weight:bold;
+				width:100%;
+				vertical-align:top;
+                       /* position:relative; top:-307px; left: 238px; */
+
+            }
+
+            .cl {
+                background-color: black;
+                font-size:50px;
+                height:50px;
+                color: white;
+                //font-family: serif;
+                }
+
+            .button {
+                    background-color: #4CAF50; /* Green */
+                    border: 1px solid green;
+                    color: white;
+                    padding: 5px 14px;
+                    text-align: center;
+                    text-decoration: none;
+                    display: inline-block;
+                    font-size: 16px;
+                    cursor: pointer;
+                    float: left;
+            }
+			
+			.button11 {
+                font-family:Lucida Bright; 
+                font-size:15px; 
+                height:40px; 
+                margin-left: 0px; 
+                box-shadow: 3px 3px;
+                box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); 
+            }
+			
+			.pgc {
+				display: block;
+				width: 100%;
+                color: white;
+				font-weight: bold;
+				font-size: 20%;
+                text-align: center;
+                padding: 14px 16px;
+                //text-decoration: none;
+				background-color: #333;
+				border: 1px solid black;
+				border-bottom:1px solid #bbb;
+				
+			}
+			
+			input[type = "submit"].pgc:hover:not(.active) {
+				background-color: #111;
+			}
+			
+			input[type = "submit"].pgc:active {
+                background-color: #4CAF50;
+            }
+			
+            .button:hover {
+                    background-color: #3e8e41;
+            }
+
+            div.polaroid {
+              //width: 250px;
+			  font-weight:normal;
+              box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+              //text-align: center;
+              //border: 2px solid #191970;
+              background-color: white;
+              position:relative; left:23%;
+              font-family:Arial;
+			  font-size:15px;
+              width:54%;
+            }
+
+            div.container {
+              padding: 10px;
+            }
+
+            .dropbtn {
+                background-color: black;
+                color: white;
+                //padding: 16px;
+                //padding: 50px 50px 50px 50px;
+                padding-left: 80px;
+                padding-right:80px;
+
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+                width:100%
+            }
+
+            .dropdown {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                background-color: black;
+                overflow:auto;
+                width:100%;
+                //min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            }
+			
+			.dropbtn2 {
+                background-color: black;
+                color: white;
+                //padding: 16px;
+                //padding: 50px 50px 50px 50px;
+                //padding-left: 80px;
+                //padding-right:80px;
+                
+                font-size: 16px;
+                border: none;
+                cursor: pointer;
+                width:100%
+            }
+
+            .dropdown2 {
+                position: relative;
+                display: inline-block;
+            }
+
+            .dropdown-content2 {
+                display: none;
+                position: absolute;
+                background-color: black;
+                color:white;
+                font-size: 16px;
+                overflow:auto;
+                text-align:center;
+                width:100%;
+                z-index:10;
+                //min-width: 160px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                //box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+            }
+
+            /*.dropdown-content a {
+                color: black;
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+            }
+
+            .dropdown-content a:hover {background-color: #f1f1f1}
+            */
+
+
+            .dropdown:hover .dropdown-content {
+                display: block;
+            }
+
+            .dropdown:hover .dropbtn {
+                background-color: #3e8e41;
+            }
+			
+			.dropdown2:hover .dropdown-content2 {
+                display: block;
+            }
+
+            .dropdown2:hover .dropbtn2 {
+                background-color: #3e8e41;
+            }
+			
+			.inputtype {
+                    width: 100%;
+                    height: 35px;
+                    font-size: 20px;
+                    //padding: 12px 20px;
+                    margin: 8px 0;
+                    display: inline-block;
+                    border: 1px solid #ccc;
+                    border-radius: 4px;
+                    box-sizing: border-box;
+            
+            }
+
+        </style>
+
+    </head>
+    <body style="background-image: url('http://www.pixelstalk.net/wp-content/uploads/2016/06/Light-Blue-Backgrounds-Free-Downlaod.jpg');">
+
+    <br><br>
+
+	{% block formv %}
+	{% endblock %}
+	
+            <div class="class1" align="center">
+
+                <div class="class2" align="left" >
+                    <table >
+                        <tr>
+                            <td colspan="4" style="padding-left:20px;">
+                                <p class="unclass">Entertainment</p>
+                            </td>
+                            <td style="align:left; float:left">
+								<p class="unclass">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<!--<input type="text" name="t" value="search" style="color:grey;font-family:Lucida Bright; font-size:15px; height:30px; margin-left:0px;
+								box-shadow: 3px 3px; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">&nbsp;
+								<input type="submit" name="search" value="Search">-->
+								
+								{% block link1 %}
+								{% endblock %}
+								
+								</p>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+				<br /><br />
+
+				<div>
+
+				<table class="table1">
+					<tr>
+						<td style="background-color:black; align:left; width:20%; height:100%; vertical-align:top;">
+						<table>
+						
+							{% block home_buttons %}
+							{% endblock %}
+							
+                            <tr style="height:50%">
+								<div class="dropdown">
+									<button class="dropbtn"><h2>Calender&nbsp;&#8681;</h2></button>
+									<div class="dropdown-content">
+										<p style="color:White">
+										From date: <br>
+										Year: <select name='fyear'>
+											{% for snum in range %}
+												{% if sd and snum == fy %}
+													<option value = {{snum}} selected='selected'> {{snum}} </option>
+												{% else %}
+													<option value = {{snum}} > {{ snum }} </option>
+												{% endif %}
+											{% endfor %}
+										</select>
+
+										&nbsp;&nbsp;Month: <select name='fmonth'>
+											{% for m in Months %}
+												{% if sd and forloop.counter == fm  %}
+													<option value = {{forloop.counter}} selected='selected'> {{ m }} </option>
+												{% else %}
+													<option value = {{forloop.counter}} > {{m}} </option>
+												{% endif %}
+											{% endfor %}
+										</select>
+
+										&nbsp;Day:<select name='fday'>
+										{% for num in range2 %}
+											{% if sd and num == fd %}
+												<option value= {{num}} selected='selected'> {{num}} </option>
+											{% else %}
+												<option value= {{num}} > {{num}} </option>
+											{% endif %}
+										{% endfor %}
+										</select>
+
+
+										<br><br>To date: <br>
+										Year:
+										<select name='tyear'>
+											{% for snum in range %}
+												{% if sd and snum == ty %}
+													<option value = {{snum}} selected='selected'> {{snum}} </option>
+												{% else %}
+													<option value = {{snum}} > {{ snum }} </option>
+												{% endif %}
+
+											{% endfor %}
+										</select>
+
+										&nbsp;&nbsp;Month: <select name='tmonth'>
+											{% for m in Months %}
+												{% if sd and forloop.counter == tm  %}
+													<option value = {{forloop.counter}} selected='selected'> {{ m }} </option>
+												{% else %}
+													<option value = {{forloop.counter}} > {{m}} </option>
+												{% endif %}
+											{% endfor %}
+										</select>
+
+										&nbsp;Day:<select name='tday'>
+										{% for num in range2 %}
+											{% if sd and num == td %}
+												<option value= {{num}} selected='selected'> {{num}} </option>
+											{% else %}
+												<option value= {{num}} > {{num}} </option>
+											{% endif %}
+										{% endfor %}
+										</select>
+										<br><br>
+										<input type='checkbox' name='sd' value='sd'>Search by date</p>
+									</div>
+								</div>
+							</tr>
+						</table>
+						</td>
+
+						<td  style="background-color: #DCDCDC; height:550px; width:65%;">
+
+						<table style="width:100%;">
+							<tr> 
+								<td>
+								{% block content %}
+								{% endblock %}
+								</td>
+							</tr>
+							<tr>
+								<td style="" >
+								<div style="width:100%; height: 500px; overflow:scroll; ">
+								<br><br><br>
+								{% autoescape off %}
+									{{ tweetz }}
+								{% endautoescape %}
+								</div>
+								</td>	
+							</tr> 	
+						</table>		
+						<br /><br />
+						</td>
+                                        
+						<td style="background-color: black; color:white; text-align:center; vertical-align:top;">
+						<table border="2">
+							<tr>
+								<img src="http://plusquotes.com/images/quotes-img/Happy_birthday.jpg" height="150" width="200" alt="Birthdays:">
+                                </img>
+                            </tr>
+							
+                            <tr>
+								<h3>Date: {{date}} </h3>
+								<h3> {% if bd_n.fn != None or bd_n.ln != None  %} {{bd_n.fn}} {{bd_n.ln}} {% endif %}</h3>	
+							</tr>
+							
+							<tr style="border: 3px solid black;">
+								<div style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);">
+								<hr><h2><br>Format of <br>Tweets:</h2><br>
+								
+								{% if fot == "simple" %}
+									<input type="radio" name="fot" value="simple" checked="checked">Simple (Faster) <br>
+								{% elif fot %}
+									<input type="radio" name="fot" value="simple" >Simple (Faster) <br>
+								{% else %}
+									<input type="radio" name="fot" value="simple" checked="checked" >Simple (Faster) <br>
+								{% endif %}
+
+								{% if fot == "embed" %}
+									<input type="radio" name="fot" value="embed" checked="checked">Embedded (Slower)
+								{% else %}
+									<input type="radio" name="fot" value="embed">Embedded (Slower)
+								{% endif %}
+
+								<br>No. of Tweets:&nbsp;<input type="number" name="notw" min="1" max="100" value="25">
+								</div>
+							</tr>
+						</table>
+						</td>
+					</tr>		
+					</div>
+				</table>
+				</div>
+
+		</form>
+	</body>
+</html>

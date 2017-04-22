@@ -1,0 +1,5 @@
+to run the server:
+	command line: 
+		cd C:\Users\a\Desktop\FINAL YEAR PROJECT\django
+		python manage.py runserver
+	browser:	http://127.0.0.1:8000/
